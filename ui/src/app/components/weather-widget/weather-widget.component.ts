@@ -12,14 +12,15 @@ import { WeatherService } from 'src/app/shared/services/shared-services.module';
   selector: 'app-weather-widget',
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.css'],
+  providers: [WeatherService],
 })
 export class WeatherWidgetComponent implements OnInit {
   @Input() city: City;
 
-  constructor() {}
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-/*     this.weatherService
+    this.weatherService
       .getCurrentWeatherUsingUnits(
         this.city?.Coordinates?.Latitude,
         this.city?.Coordinates?.Longitude,
@@ -28,7 +29,7 @@ export class WeatherWidgetComponent implements OnInit {
       .toPromise()
       .then((weather) => {
         this.city.Weather = weather;
-      }); */
+      });
   }
 
   transformCoordinatesToDMS(coordinates: Coordinate): string {
@@ -45,10 +46,17 @@ export class WeatherWidgetComponent implements OnInit {
   }
 
   splitCapitaliseFirstLetter(value) {
-    return String(value)?.split(' ').map((val) => Helpers.capitalizeFirstLetter(val)).join(' ');
+    return String(value)
+      ?.split(' ')
+      .map((val) => Helpers.capitalizeFirstLetter(val))
+      .join(' ');
+  }
+
+  toFahrenheit(digit) {
+    return `${Math.floor(digit * 1.8 + 32.0)}° F`;
   }
 
   toCelsius(digit) {
-    return `${Math.floor((digit - 32) / 1.8000)}° C`;
+    return `${Math.floor((digit - 32) / 1.8)}° C`;
   }
 }
