@@ -1,0 +1,11 @@
+.weather-widget ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.weather-widget ul li {
+  list-style: none;
+  flex: 0 0 33.333333%;
+  margin: 3px;
+}
