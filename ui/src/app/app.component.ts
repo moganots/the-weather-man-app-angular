@@ -21,7 +21,11 @@ export class AppComponent implements OnInit {
           Latitude: 52.026301,
           Longitude: 5.554431,
         },
-        Weather: null
+        Weather: {
+          Current: `cloudy with a chance of rain`,
+          Actual: 204,
+          FeelsLike: 198
+        }
       },
       {
         Name: `Chisinau, MD`,
@@ -29,7 +33,11 @@ export class AppComponent implements OnInit {
           Latitude: 47.010453,
           Longitude: 28.86381,
         },
-        Weather: null
+        Weather: {
+          Current: `cloudy with a chance of rain`,
+          Actual: 204,
+          FeelsLike: 198
+        }
       },
       {
         Name: `Kaunas, LT`,
@@ -37,7 +45,11 @@ export class AppComponent implements OnInit {
           Latitude: 54.898521,
           Longitude: 23.903597,
         },
-        Weather: null
+        Weather: {
+          Current: `rainy with thunderstorms`,
+          Actual: 123,
+          FeelsLike: 123
+        }
       },
       {
         Name: `Johannesburg, SA`,
@@ -45,7 +57,11 @@ export class AppComponent implements OnInit {
           Latitude: 26.2041,
           Longitude: 28.0473,
         },
-        Weather: null
+        Weather: {
+          Current: `clear skies`,
+          Actual: 234.6,
+          FeelsLike: 236
+        }
       },
       {
         Name: `Cape Town, SA`,
@@ -53,7 +69,11 @@ export class AppComponent implements OnInit {
           Latitude: 33.9249,
           Longitude: 18.4241,
         },
-        Weather: null
+        Weather: {
+          Current: `cloudy with a chance of rain`,
+          Actual: 204,
+          FeelsLike: 198
+        }
       },
     ]);
   }

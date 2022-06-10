@@ -74,7 +74,7 @@ function mapValues(weather: any): Weather {
   if(weather){
     const current = Helpers.getFirst(weather?.weather);
     return {
-      Current: current?.description,
+      Current: current?.description?.split(' '),
       Actual: weather?.main?.temp,
       FeelsLike: weather?.main?.feels_like
     } as Weather;
