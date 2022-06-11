@@ -1,6 +1,6 @@
 <div class="card-container">
-  <div class="card" style="border: 1px solid grey; border-radius: 6px; padding: 5px;">
-    <h4>City</h4>
+  <div class="card weather-widget-card">
+    <h4>City<a (click)="onClickBookmark(city)"><i class="material-icons">{{(city?.Bookmarked) ? 'bookmark' : 'bookmark_border'}}</i></a></h4>
     <p>{{ city?.Name }}</p>
     <h4>Coordinate(s)</h4>
     <p>{{ transformCoordinatesToDMS(city?.Coordinates) }}</p>

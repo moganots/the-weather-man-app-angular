@@ -7,6 +7,7 @@ import {
 } from 'src/app/shared/common/shared-common.module';
 import { BaseService } from 'src/app/shared/services/base-service/-base.service';
 import { WeatherService } from 'src/app/shared/services/shared-services.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-weather-widget',
@@ -16,11 +17,15 @@ import { WeatherService } from 'src/app/shared/services/shared-services.module';
 })
 export class WeatherWidgetComponent implements OnInit {
   @Input() city: City;
+  bookmarkedCities = Helpers.jsonToArray(
+    JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
+  );
 
-  constructor(private weatherService: WeatherService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.weatherService
+    this.isBookmarked();
+    /*     this.weatherService
       .getCurrentWeatherUsingUnits(
         this.city?.Coordinates?.Latitude,
         this.city?.Coordinates?.Longitude,
@@ -29,7 +34,11 @@ export class WeatherWidgetComponent implements OnInit {
       .toPromise()
       .then((weather) => {
         this.city.Weather = weather;
-      });
+      }); */
+  }
+
+  isBookmarked(){
+    this.city.Bookmarked = this.bookmarkedCities.includes(this.city?.Name);
   }
 
   transformCoordinatesToDMS(coordinates: Coordinate): string {
@@ -58,5 +67,20 @@ export class WeatherWidgetComponent implements OnInit {
 
   toCelsius(digit) {
     return `${Math.floor((digit - 32) / 1.8)}° C`;
+  }
+
+  onClickBookmark(city: City) {
+    var bookmarks = Helpers.jsonToArray(
+      JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
+    );
+    console.log(bookmarks);
+    if (city?.Bookmarked) {
+      Helpers.removeIf(bookmarks, city?.Name);
+    } else {
+      Helpers.addIf(bookmarks, city?.Name);
+    }
+    city.Bookmarked = !city.Bookmarked;
+    localStorage.setItem(environment.localStorageBookmarks, JSON.stringify(bookmarks));
+    console.log(bookmarks);
   }
 }

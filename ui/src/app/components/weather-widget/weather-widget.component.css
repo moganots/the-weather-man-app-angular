@@ -1,0 +1,28 @@
+div.weather-widget-card {
+  border: 1px solid grey;
+  border-radius: 6px;
+  padding: 5px;
+}
+a,
+a:link,
+a:active,
+a:visited {
+  cursor: pointer;
+  display: inline;
+  float: right;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  text-align: justify;
+  text-decoration: none;
+  vertical-align: middle;
+}
+i {
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  width: 30px;
+  text-align: left;
+  vertical-align: middle;
+}

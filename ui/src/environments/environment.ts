@@ -13,7 +13,8 @@ export const environment = {
       relativePath: '/data/2.5/weather',
       queryPath: '?lat={lat}&lon={lon}&appid={apiKey}',
     }
-  }
+  },
+  localStorageBookmarks: 'weatherManBookmakrs'
 };
 
 /*

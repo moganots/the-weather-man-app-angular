@@ -5,4 +5,5 @@ export interface City {
     Name: string;
     Coordinates: Coordinate;
     Weather: Weather
+    Bookmarked: boolean;
 }
