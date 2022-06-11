@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { City, Helpers } from './shared/common/shared-common.module';
+import { City, Helpers, WeatherUnit } from './shared/common/shared-common.module';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   bookmarkedCities = Helpers.jsonToArray(
     JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
   );
+  weatherUnit = WeatherUnit.Metric;
   cities: Observable<City[]>;
   constructor() {}
   ngOnInit(): void {

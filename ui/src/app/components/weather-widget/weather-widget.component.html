@@ -6,9 +6,9 @@
     <p>{{ transformCoordinatesToDMS(city?.Coordinates) }}</p>
     <h4>Current weather conditions</h4>
     <p>{{ splitCapitaliseFirstLetter(city?.Weather?.Current) }}</p>
-    <h4>Temperature in Degrees Celsius</h4>
-    <p>{{ toCelsius(city?.Weather?.Actual) }}</p>
-    <h4>Feels like in Degrees Celsius</h4>
-    <p>{{ toCelsius(city?.Weather?.FeelsLike) }}</p>
+    <h4>Temperature in Degrees&nbsp;{{ getWeatherUnitName() }}</h4>
+    <p>{{ city?.Weather?.Actual }}&nbsp;{{ getWeatherUnitSymbol() }}</p>
+    <h4>Feels like in Degrees&nbsp;{{ getWeatherUnitName() }}</h4>
+    <p>{{ city?.Weather?.FeelsLike }}&nbsp;{{ getWeatherUnitSymbol() }}</p>
   </div>
 </div>

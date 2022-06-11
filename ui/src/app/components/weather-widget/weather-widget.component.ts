@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 })
 export class WeatherWidgetComponent implements OnInit {
   @Input() city: City;
+  @Input() weatherUnit = WeatherUnit.Metric;
   bookmarkedCities = Helpers.jsonToArray(
     JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
   );
@@ -29,7 +30,7 @@ export class WeatherWidgetComponent implements OnInit {
       .getCurrentWeatherUsingUnits(
         this.city?.Coordinates?.Latitude,
         this.city?.Coordinates?.Longitude,
-        WeatherUnit.Metric
+        this.weatherUnit
       )
       .subscribe((weather) => {
         this.city.Weather = weather;
@@ -60,12 +61,20 @@ export class WeatherWidgetComponent implements OnInit {
       .join(' ');
   }
 
-  toFahrenheit(digit) {
-    return `${Math.floor(digit * 1.8 + 32.0)}° F`;
+  getWeatherUnitName() {
+    switch(this.weatherUnit){
+      case WeatherUnit.Imperial: return `Kelvin`;
+      case WeatherUnit.Metric: return `Celsius`;
+      case WeatherUnit.Standard: return `Fahrenheit`;
+    }
   }
 
-  toCelsius(digit) {
-    return `${Math.floor((digit - 32) / 1.8)}° C`;
+  getWeatherUnitSymbol() {
+    switch(this.weatherUnit){
+      case WeatherUnit.Imperial: return `°K`;
+      case WeatherUnit.Metric: return `°C`;
+      case WeatherUnit.Standard: return `°F`;
+    }
   }
 
   onClickBookmark(city: City) {
