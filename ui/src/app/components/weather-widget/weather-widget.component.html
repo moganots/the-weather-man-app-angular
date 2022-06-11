@@ -5,7 +5,7 @@
     <h4>Coordinate(s)</h4>
     <p>{{ transformCoordinatesToDMS(city?.Coordinates) }}</p>
     <h4>Current weather conditions</h4>
-    <p>{{ splitCapitaliseFirstLetter(city?.Weather?.CurrentWeatherDescription) }}&nbsp;<img src="{{ city?.Weather?.CurrentWeatherIconUri }}" /></p>
+    <p>{{ splitCapitaliseFirstLetter(city?.Weather?.CurrentWeatherDescription) }}&nbsp;<img src="{{ city?.Weather?.CurrentWeatherIconUri }}" title="{{ splitCapitaliseFirstLetter(city?.Weather?.CurrentWeatherDescription) }}" /></p>
     <h4>Temperature in Degrees&nbsp;{{ getWeatherUnitName() }}</h4>
     <p>{{ city?.Weather?.Actual }}&nbsp;{{ getWeatherUnitSymbol() }}</p>
     <h4>Feels like in Degrees&nbsp;{{ getWeatherUnitName() }}</h4>

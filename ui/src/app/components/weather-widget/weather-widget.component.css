@@ -16,7 +16,8 @@ a:visited {
   text-decoration: none;
   vertical-align: middle;
 }
-i, img {
+i,
+img {
   cursor: pointer;
   display: inline-block;
   height: auto;
@@ -28,5 +29,7 @@ i, img {
 }
 
 img {
-    float: right;
+  border: 2px solid grey;
+  border-radius: 12px;
+  float: right;
 }
