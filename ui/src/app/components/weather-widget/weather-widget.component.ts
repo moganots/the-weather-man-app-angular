@@ -70,17 +70,12 @@ export class WeatherWidgetComponent implements OnInit {
   }
 
   onClickBookmark(city: City) {
-    var bookmarks = Helpers.jsonToArray(
-      JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
-    );
-    console.log(bookmarks);
     if (city?.Bookmarked) {
-      Helpers.removeIf(bookmarks, city?.Name);
+      Helpers.removeIf(this.bookmarkedCities, city?.Name);
     } else {
-      Helpers.addIf(bookmarks, city?.Name);
+      Helpers.addIf(this.bookmarkedCities, city?.Name);
     }
     city.Bookmarked = !city.Bookmarked;
-    localStorage.setItem(environment.localStorageBookmarks, JSON.stringify(bookmarks));
-    console.log(bookmarks);
+    localStorage.setItem(environment.localStorageBookmarks, JSON.stringify(this.bookmarkedCities));
   }
 }
