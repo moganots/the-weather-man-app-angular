@@ -64,7 +64,6 @@ export class WeatherService extends BaseService {
           !(fromStringOption === null || fromStringOption === undefined)
       )
       .join(`&`);
-      console.log(fromStringOptions);
     return { params: new HttpParams({ fromString: fromStringOptions }) };
   }
   mapValues(weather: any): Weather {
