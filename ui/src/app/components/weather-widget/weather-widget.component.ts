@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   City,
   Coordinate,
@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 export class WeatherWidgetComponent implements OnInit {
   @Input() city: City;
   @Input() weatherUnit = WeatherUnit.Metric;
+  @Output() afterClickBookmark: EventEmitter<any> = new EventEmitter();
   bookmarkedCities = Helpers.jsonToArray(
     JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
   );
@@ -88,5 +89,6 @@ export class WeatherWidgetComponent implements OnInit {
       environment.localStorageBookmarks,
       JSON.stringify(this.bookmarkedCities)
     );
+    this.afterClickBookmark.emit({});
   }
 }

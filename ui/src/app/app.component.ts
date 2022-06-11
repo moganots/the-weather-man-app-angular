@@ -15,17 +15,11 @@ export class AppComponent implements OnInit {
   );
   weatherUnit = WeatherUnit.Metric;
   cities: Observable<City[]>;
+
   constructor() {}
   ngOnInit(): void {
     this.getCities();
-    this.cities.toPromise().then((cities) => {
-      cities.sort(function (x, y) {
-        // true values first
-        return x.Bookmarked === y.Bookmarked ? 0 : x.Bookmarked ? -1 : 1;
-        // false values first
-        // return (x.Bookmarked === y.Bookmarked)? 0 : x.Bookmarked? 1 : -1;
-      });
-    });
+    this.sortBookmarkedCities();
   }
   getCities() {
     this.cities = of([
@@ -99,4 +93,14 @@ export class AppComponent implements OnInit {
   isBookmarked = (cityName: string) => {
     return this.bookmarkedCities.includes(cityName);
   };
+  sortBookmarkedCities(){
+    this.cities.toPromise().then((cities) => {
+      cities.sort(function (x, y) {
+        // true values first
+        return x.Bookmarked === y.Bookmarked ? 0 : x.Bookmarked ? -1 : 1;
+        // false values first
+        // return (x.Bookmarked === y.Bookmarked)? 0 : x.Bookmarked? 1 : -1;
+      });
+    });
+  }
 }
