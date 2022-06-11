@@ -5,7 +5,8 @@ An Angular app to display an overview of the current weather in selected places
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
 
 ## ToDo
-(1) Enable auto refreshing to show most recently bookmarked city(ies), as currently the entire app has to be refreshed after a city is bookmarked.
+1. Enable auto refreshing to show most recently bookmarked city(ies), as currently the entire app has to be refreshed after a city is bookmarked.
+2. Secure the OpenWeather APIKey (appid) in the environment.ts and environment.prod.ts file(s)
 
 ## Development server
 

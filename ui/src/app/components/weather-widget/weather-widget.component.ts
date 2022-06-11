@@ -21,23 +21,22 @@ export class WeatherWidgetComponent implements OnInit {
     JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
   );
 
-  constructor() {}
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.isBookmarked();
-    /*     this.weatherService
+    this.weatherService
       .getCurrentWeatherUsingUnits(
         this.city?.Coordinates?.Latitude,
         this.city?.Coordinates?.Longitude,
         WeatherUnit.Metric
       )
-      .toPromise()
-      .then((weather) => {
+      .subscribe((weather) => {
         this.city.Weather = weather;
-      }); */
+      });
   }
 
-  isBookmarked(){
+  isBookmarked() {
     this.city.Bookmarked = this.bookmarkedCities.includes(this.city?.Name);
   }
 
@@ -76,6 +75,9 @@ export class WeatherWidgetComponent implements OnInit {
       Helpers.addIf(this.bookmarkedCities, city?.Name);
     }
     city.Bookmarked = !city.Bookmarked;
-    localStorage.setItem(environment.localStorageBookmarks, JSON.stringify(this.bookmarkedCities));
+    localStorage.setItem(
+      environment.localStorageBookmarks,
+      JSON.stringify(this.bookmarkedCities)
+    );
   }
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { WeatherUnit } from '../../common/enums/weather-unit.enum';
 import { Weather } from '../../common/shared-common.module';
 import { Helpers } from '../../common/utilities/helpers';
@@ -11,28 +12,24 @@ import { BaseService } from '../base-service/-base.service';
   providedIn: 'root',
 })
 export class WeatherService extends BaseService {
+  config = environment.api.openweather;
   constructor(
-    public httpClient: HttpClient,
-    public protocol: string,
-    public host: string,
-    public port: string,
-    public relativePath: string,
-    public queryPath: string,
-    public apiKey: string
+    public httpClient: HttpClient
   ) {
     super(httpClient);
-    this.protocol = protocol;
-    this.host = host;
-    this.port = port;
-    this.relativePath = relativePath;
-    this.apiKey = apiKey;
+    this.protocol = this.config?.protocol;
+    this.host = this.config?.host;
+    this.port = this.config?.port;
+    this.relativePath = this.config?.relativePath;
+    this.queryPath = this.config?.queryPath;
+    this.apiKey = this.config?.apiKey;
   }
   getCurrentWeather<T>(lat: number, lon: number): Observable<T> {
     return this.httpClient
       .get(this.getBaseApi(), this.getQueryParams(lat, lon))
       .pipe(
         map((responseResult: any) => {
-          return mapValues(responseResult);
+          return this.mapValues(responseResult);
         }),
         catchError((error) => this._handleError(error))
       );
@@ -40,13 +37,13 @@ export class WeatherService extends BaseService {
   getCurrentWeatherUsingUnits(
     lat: number,
     lon: number,
-    unit: WeatherUnit = WeatherUnit.Standard
+    units: WeatherUnit = WeatherUnit.Standard
   ) {
     return this.httpClient
-      .get(this.getBaseApi(), this.getQueryParams(lat, lon, unit))
+      .get(this.getBaseApi(), this.getQueryParams(lat, lon, units))
       .pipe(
         map((responseResult: any) => {
-          return mapValues(responseResult);
+          return this.mapValues(responseResult);
         }),
         catchError((error) => this._handleError(error))
       );
@@ -54,31 +51,29 @@ export class WeatherService extends BaseService {
   getQueryParams(
     lat: number,
     lon: number,
-    unit: WeatherUnit = WeatherUnit.Standard
+    units: WeatherUnit = WeatherUnit.Standard
   ) {
     const fromStringOptions = [
-      Helpers.nullIf(`apiKey=${this.apiKey}`),
+      Helpers.nullIf(`appid=${this.apiKey}`),
       Helpers.nullIf(`lat=${lat}`),
       Helpers.nullIf(`lon=${lon}`),
-      Helpers.nullIf(`unit=${unit}`),
+      Helpers.nullIf(`units=${units}`),
     ]
       .filter(
         (fromStringOption) =>
           !(fromStringOption === null || fromStringOption === undefined)
       )
       .join(`&`);
+      console.log(fromStringOptions);
     return { params: new HttpParams({ fromString: fromStringOptions }) };
   }
-}
-function mapValues(weather: any): Weather {
-  if(weather){
+  mapValues(weather: any): Weather {
     const current = Helpers.getFirst(weather?.weather);
     return {
-      Current: current?.description?.split(' '),
+      Current: current?.description,
       Actual: weather?.main?.temp,
       FeelsLike: weather?.main?.feels_like
-    } as Weather;
+    } as unknown as Weather;
   }
-  return null;
 }
 
