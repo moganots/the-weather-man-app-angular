@@ -16,7 +16,7 @@ a:visited {
   text-decoration: none;
   vertical-align: middle;
 }
-i {
+i, img {
   cursor: pointer;
   display: inline-block;
   height: auto;
@@ -25,4 +25,8 @@ i {
   width: 30px;
   text-align: left;
   vertical-align: middle;
+}
+
+img {
+    float: right;
 }

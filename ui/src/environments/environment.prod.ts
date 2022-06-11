@@ -8,6 +8,7 @@ export const environment = {
       port: null,
       relativePath: '/data/2.5/weather',
       queryPath: '?lat={lat}&lon={lon}&appid={apiKey}',
+      iconUri: 'http://openweathermap.org/img/wn/{0}.png'
     }
   },
   localStorageBookmarks: 'weatherManBookmakrs'

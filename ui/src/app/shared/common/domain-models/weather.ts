@@ -1,5 +1,6 @@
 export interface Weather {
-    Current: string,
+    CurrentWeatherDescription: string,
+    CurrentWeatherIconUri: string,
     Actual: number,
     FeelsLike: number
 }

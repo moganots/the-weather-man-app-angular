@@ -69,7 +69,8 @@ export class WeatherService extends BaseService {
   mapValues(weather: any): Weather {
     const current = Helpers.getFirst(weather?.weather);
     return {
-      Current: current?.description,
+      CurrentWeatherDescription: current?.description,
+      CurrentWeatherIconUri: this.config?.iconUri?.replace('{0}', current?.icon),
       Actual: weather?.main?.temp,
       FeelsLike: weather?.main?.feels_like
     } as unknown as Weather;

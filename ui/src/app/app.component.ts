@@ -30,7 +30,8 @@ export class AppComponent implements OnInit {
           Longitude: 5.550,
         },
         Weather: {
-          Current: `cloudy with a chance of rain`,
+          CurrentWeatherDescription: `cloudy with a chance of rain`,
+          CurrentWeatherIconUri: `http://openweathermap.org/img/wn/10d@2x.png`,
           Actual: 204,
           FeelsLike: 198,
         },
@@ -43,7 +44,8 @@ export class AppComponent implements OnInit {
           Longitude: 28.858,
         },
         Weather: {
-          Current: `cloudy with a chance of rain`,
+          CurrentWeatherDescription: `cloudy with a chance of rain`,
+          CurrentWeatherIconUri: `http://openweathermap.org/img/wn/10d@2x.png`,
           Actual: 204,
           FeelsLike: 198,
         },
@@ -56,7 +58,8 @@ export class AppComponent implements OnInit {
           Longitude: 23.900,
         },
         Weather: {
-          Current: `rainy with thunderstorms`,
+          CurrentWeatherDescription: `rainy with thunderstorms`,
+          CurrentWeatherIconUri: `http://openweathermap.org/img/wn/10d@2x.png`,
           Actual: 123,
           FeelsLike: 123,
         },
@@ -69,7 +72,8 @@ export class AppComponent implements OnInit {
           Longitude: 28.044,
         },
         Weather: {
-          Current: `clear skies`,
+          CurrentWeatherDescription: `clear skies`,
+          CurrentWeatherIconUri: `http://openweathermap.org/img/wn/10d@2x.png`,
           Actual: 234.6,
           FeelsLike: 236,
         },
@@ -82,7 +86,8 @@ export class AppComponent implements OnInit {
           Longitude: 18.423,
         },
         Weather: {
-          Current: `cloudy with a chance of rain`,
+          CurrentWeatherDescription: `cloudy with a chance of rain`,
+          CurrentWeatherIconUri: `http://openweathermap.org/img/wn/10d@2x.png`,
           Actual: 204,
           FeelsLike: 198,
         },
