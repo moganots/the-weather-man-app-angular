@@ -31,8 +31,8 @@ export class AppComponent implements OnInit {
       {
         Name: `Veenendaal, NL`,
         Coordinates: {
-          Latitude: 52.026301,
-          Longitude: 5.554431,
+          Latitude: 52.017,
+          Longitude: 5.550,
         },
         Weather: {
           Current: `cloudy with a chance of rain`,
@@ -44,8 +44,8 @@ export class AppComponent implements OnInit {
       {
         Name: `Chisinau, MD`,
         Coordinates: {
-          Latitude: 47.010453,
-          Longitude: 28.86381,
+          Latitude: 47.006,
+          Longitude: 28.858,
         },
         Weather: {
           Current: `cloudy with a chance of rain`,
@@ -57,8 +57,8 @@ export class AppComponent implements OnInit {
       {
         Name: `Kaunas, LT`,
         Coordinates: {
-          Latitude: 54.898521,
-          Longitude: 23.903597,
+          Latitude: 54.900,
+          Longitude: 23.900,
         },
         Weather: {
           Current: `rainy with thunderstorms`,
@@ -68,10 +68,10 @@ export class AppComponent implements OnInit {
         Bookmarked: this.isBookmarked(`Kaunas, LT`),
       },
       {
-        Name: `Johannesburg, SA`,
+        Name: `Johannesburg, ZA`,
         Coordinates: {
-          Latitude: 26.2041,
-          Longitude: 28.0473,
+          Latitude: -26.202,
+          Longitude: 28.044,
         },
         Weather: {
           Current: `clear skies`,
@@ -81,10 +81,10 @@ export class AppComponent implements OnInit {
         Bookmarked: this.isBookmarked(`Johannesburg, SA`),
       },
       {
-        Name: `Cape Town, SA`,
+        Name: `Cape Town, ZA`,
         Coordinates: {
-          Latitude: 33.9249,
-          Longitude: 18.4241,
+          Latitude: -33.926,
+          Longitude: 18.423,
         },
         Weather: {
           Current: `cloudy with a chance of rain`,
