@@ -22,6 +22,7 @@ export class WeatherWidgetComponent implements OnInit {
   bookmarkedCities = Helpers.jsonToArray(
     JSON.parse(localStorage.getItem(environment.localStorageBookmarks))
   );
+  weatherUnitKeys = Object.keys(WeatherUnit);
 
   constructor(private weatherService: WeatherService) {}
 
@@ -40,6 +41,14 @@ export class WeatherWidgetComponent implements OnInit {
 
   isBookmarked() {
     this.city.Bookmarked = this.bookmarkedCities.includes(this.city?.Name);
+  }
+
+  getWeatherUnitKeys(){
+    return Object.keys(WeatherUnit);
+  }
+
+  onButtonClicked(unit){
+    this.weatherUnit = Object.values(WeatherUnit)[Object.keys(WeatherUnit).indexOf(unit)];
   }
 
   transformCoordinatesToDMS(coordinates: Coordinate): string {
